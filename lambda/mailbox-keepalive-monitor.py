@@ -33,6 +33,8 @@ def lambda_handler(event, context):
     Returns:
         str: A message indicating the outcome of the function execution.
     """
+    print(event)  # For testing purposes
+
     # Retrieve environment variables
     ddb_table_name = os.environ.get('DDB_TABLE_NAME')
     sns_arn = os.environ.get('SNS_ARN')

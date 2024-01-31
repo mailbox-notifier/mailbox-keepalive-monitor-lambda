@@ -58,7 +58,7 @@ def lambda_handler(event, context):
         response = table.get_item(Key={'id': 'open'})
         if 'Item' in response and 'timestamp' in response['Item']:
             timestamp_str = response['Item']['timestamp']
-            timestamp = datetime.datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+            timestamp = datetime.datetime.strptime(timestamp_str, '%Y%m%d%H%M%S')
             timestamp = timestamp.replace(tzinfo=pytz.timezone('US/Central'))
 
             # Check if the timestamp is older than the threshold

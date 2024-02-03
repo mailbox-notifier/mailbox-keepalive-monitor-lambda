@@ -67,9 +67,10 @@ def lambda_handler(event, context):
             if datetime.datetime.now(pytz.timezone('US/Central')) - timestamp > datetime.timedelta(
                     hours=threshold_hours):
                 # Send an SNS notification
+                print(f"Mailbox offline since {timestamp}.")
                 sns.publish(
                     TopicArn=sns_arn,
-                    Message=f"The timestamp in DynamoDB is over {threshold_hours} hours old.",
+                    Message=f"Mailbox offline since {timestamp}.",
                     Subject="Mailbox State Alert"
                 )
                 return "SNS notification sent"
